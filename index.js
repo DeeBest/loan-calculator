@@ -9,6 +9,7 @@ function calculateLoan() {
   const monthlyPaymentOutput = document.getElementById(
     'monthly-payment-output'
   );
+  const errorDisplay = document.getElementById('error-display');
 
   let numberLoanAmount = Number(loanAmount);
   let numberInterestRate = Number(interestRate);
@@ -31,7 +32,9 @@ function calculateLoan() {
     ).toFixed(2);
 
     monthlyPaymentOutput.textContent = '$' + monthlyInstallment;
+    monthlyPaymentOutput.style.color = '#404650';
   } else {
-    alert('please enter valid details');
+    monthlyPaymentOutput.style.color = '#c63937';
+    monthlyPaymentOutput.textContent = 'Please put correct details.';
   }
 }
