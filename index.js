@@ -14,13 +14,24 @@ function calculateLoan() {
   let numberInterestRate = Number(interestRate);
   let numberDuration = Number(duration);
 
-  let interest =
-    (numberLoanAmount * (numberInterestRate * 0.01)) / numberDuration;
+  if (
+    numberLoanAmount >= 1 &&
+    numberLoanAmount <= 500000 &&
+    numberDuration >= 1 &&
+    numberDuration <= 72 &&
+    numberInterestRate >= 1 &&
+    numberInterestRate <= 100
+  ) {
+    let interest =
+      (numberLoanAmount * (numberInterestRate * 0.01)) / numberDuration;
 
-  let monthlyInstallment = (
-    numberLoanAmount / numberDuration +
-    interest
-  ).toFixed(2);
+    let monthlyInstallment = (
+      numberLoanAmount / numberDuration +
+      interest
+    ).toFixed(2);
 
-  monthlyPaymentOutput.textContent = '$' + monthlyInstallment;
+    monthlyPaymentOutput.textContent = '$' + monthlyInstallment;
+  } else {
+    alert('please enter valid details');
+  }
 }
